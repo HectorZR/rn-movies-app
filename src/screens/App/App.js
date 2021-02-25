@@ -3,8 +3,8 @@ import React, {Suspense} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {Text} from 'react-native';
 import {appRoutes} from '../../routes';
+import Loader from '../../components/Loader';
 
 const Stack = createStackNavigator();
 
@@ -12,7 +12,7 @@ function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Suspense fallback={<Text>Cargando...</Text>}>
+        <Suspense fallback={<Loader fullscreen />}>
           <Stack.Navigator initialRouteName="home">
             {appRoutes.map((route) => (
               <Stack.Screen

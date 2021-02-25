@@ -5,6 +5,7 @@ import useXhr from '../../utils/useXhr';
 
 export default function useFetchMovies() {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [nextPage, setNextPage] = useState(null);
 
@@ -25,10 +26,11 @@ export default function useFetchMovies() {
       .catch((err) => {
         console.error(err);
         throw new Error(trans('exceptions.requestError'));
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   useEffect(fetchMovies, [movies, currentPage]);
 
-  return [movies, nextPage, currentPage];
+  return [movies, loading, nextPage, currentPage];
 }

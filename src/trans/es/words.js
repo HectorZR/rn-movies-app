@@ -4,22 +4,28 @@ export default {
   //    D
   //    C
   //    D
+  drama: 'Drama',
   //    E
   //    F
   //    G
+  genres: 'Géneros',
   //    H
+  horror: 'Horror',
   //    I
   //    J
   //    K
   //    L
   //    M
+  mystery: 'Misterio',
   //    N
   //    O
   //    P
   //    Q
   //    R
+  rating: 'Calificación',
   //    S
   //    T
+  thriller: 'Suspenso',
   //    U
   //    V
   //    W
