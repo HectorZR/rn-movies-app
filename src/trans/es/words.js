@@ -15,6 +15,7 @@ export default {
   //    J
   //    K
   //    L
+  language: 'Lenguaje',
   //    M
   mystery: 'Misterio',
   //    N

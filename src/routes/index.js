@@ -5,6 +5,7 @@ const MovieDetails = lazy(() => import('../screens/MovieDetails'));
 
 export const apiEndpoints = {
   listMovies: '/list_movies.json',
+  detailMovie: '/movie_details.json',
 };
 
 export const appRoutes = [
