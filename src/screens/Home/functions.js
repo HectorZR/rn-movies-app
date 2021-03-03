@@ -6,22 +6,21 @@ import useXhr from '../../utils/useXhr';
 export default function useFetchMovies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [nextPage, setNextPage] = useState(null);
+  const [page, setPage] = useState(1);
 
   const [send] = useXhr({
     url: apiEndpoints.listMovies,
     queryParams: {
-      page: currentPage,
+      page,
+      limit: 10,
     },
   });
 
   const fetchMovies = () => {
     send()
       .then(({data}) => {
-        setMovies(data?.movies);
-        setCurrentPage(data?.pageNumber);
-        setNextPage(currentPage + 1);
+        setPage((oldPage) => oldPage + 1);
+        setMovies((oldMovies) => [...oldMovies, ...data?.movies]);
       })
       .catch((err) => {
         console.error(err);
@@ -30,7 +29,14 @@ export default function useFetchMovies() {
       .finally(() => setLoading(false));
   };
 
-  useEffect(fetchMovies, [movies, currentPage]);
+  const nextPage = () => setPage((oldPage) => oldPage + 1);
 
-  return [movies, loading, nextPage, currentPage];
+  const restartPage = () => {
+    setPage(1);
+    setMovies([]);
+  };
+
+  useEffect(fetchMovies, [page]);
+
+  return [movies, loading, restartPage, nextPage, page];
 }

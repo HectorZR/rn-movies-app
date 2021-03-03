@@ -4,7 +4,7 @@ import Text from '../Text';
 import styles from './styles';
 import {trans} from '../../trans/trans';
 
-function MovieCard({item, navigation}) {
+function MovieCard({item, navigation, fullWidth}) {
   function movieDetails() {
     navigation.navigate('movieDetails', {
       itemId: item.id,
@@ -12,7 +12,13 @@ function MovieCard({item, navigation}) {
   }
 
   return (
-    <View style={styles.cardContainer}>
+    <View
+      style={[
+        styles.cardContainer,
+        fullWidth
+          ? styles.cardContainerHalfWidth
+          : styles.cardContainerFullWidth,
+      ]}>
       <Pressable title="Go to details" onPress={movieDetails}>
         <ImageBackground
           style={styles.backgroundImageContainer}

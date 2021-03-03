@@ -3,7 +3,12 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   cardContainer: {
     marginVertical: 2,
+  },
+  cardContainerHalfWidth: {
     width: '50%',
+  },
+  cardContainerFullWidth: {
+    width: '100%',
   },
   contentCard: {
     justifyContent: 'flex-end',
